@@ -78,6 +78,15 @@
     <div class="panel">
         <p>Contact: <a {{action showContact contact}}>{{contact.name}}</a></p>
         <p>Total amount: ${{amount}}</p>
+        {{#linkToAnimated invoices.show one animations="main:slowSlideLeft"}}
+            one
+        {{/linkToAnimated}}
+        {{#linkToAnimated invoices.show two animations="main:slowSlideRight"}}
+            two
+        {{/linkToAnimated}}
+        {{#linkToAnimated invoices.show three animations="main:slowFade"}}
+            three
+        {{/linkToAnimated}}
     </div>
 </script>
 
