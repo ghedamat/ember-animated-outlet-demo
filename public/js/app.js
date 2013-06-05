@@ -72,6 +72,7 @@ App.InvoicesIndexRoute = Ember.Route.extend({
 
 App.InvoicesShowRoute = Ember.Route.extend({
     setupController: function(controller, model){
+        controller.set('model',model);
         controller.set('one',App.Invoice.find(101));
         controller.set('two',App.Invoice.find(102));
         controller.set('three',App.Invoice.find(103));
