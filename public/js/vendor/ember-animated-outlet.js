@@ -78,6 +78,7 @@ Ember.AnimatedContainerView = Ember.ContainerView.extend({
             var newView = q.newView,
                 oldView = q.oldView,
                 effect = q.effect;
+            oldView.triggerRecursively('willClearRender');
             this._queuedAnimation = null;
             //Push the newView to this view, which will append it to the DOM
             this.pushObject(newView);

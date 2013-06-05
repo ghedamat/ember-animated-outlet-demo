@@ -17078,7 +17078,9 @@ Ember.View = Ember.CoreView.extend(
 
     var view = this,
         stateCheckedObserver = function(){
-          view.currentState.invokeObserver(this, observer);
+          if (!view.get('removed')){
+            view.currentState.invokeObserver(this, observer);
+          }
         },
         scheduledObserver = function() {
           Ember.run.scheduleOnce('render', this, stateCheckedObserver);
@@ -17087,6 +17089,7 @@ Ember.View = Ember.CoreView.extend(
     Ember.addObserver(root, path, target, scheduledObserver);
 
     this.one('willClearRender', function() {
+      view.set('removed',true);
       Ember.removeObserver(root, path, target, scheduledObserver);
     });
   }
